@@ -1,0 +1,78 @@
+{
+  "all_zero_settings (invalid range)": {
+    "passes": false,
+    "reason": "Kp = 0 is rejected as out of range before any simulation"
+  },
+  "inert_controller: huge dead-band hides every error": {
+    "cyc": 0.0,
+    "p2p": 1.519090631063591e-09,
+    "iae": 5730.243836216321,
+    "ss": 3.9999999999999574,
+    "trav": 0.0,
+    "passes": false
+  },
+  "detune_to_nothing: tiny gain, huge reset time": {
+    "cyc": 0.0,
+    "p2p": 1.519090631063591e-09,
+    "iae": 5730.243836216321,
+    "ss": 3.9999999999999574,
+    "trav": 39.082818114938455,
+    "passes": false
+  },
+  "blanket_detune": {
+    "cyc": 1.0000000000000002,
+    "p2p": 3.6000913221624415,
+    "iae": 4720.540993655073,
+    "ss": 0.7124278485929443,
+    "trav": 156.07997990307257,
+    "passes": false
+  },
+  "max_gain_max_speed": {
+    "cyc": 1.0000000000000002,
+    "p2p": 23.360104050603738,
+    "iae": 10719.855826251332,
+    "ss": 7.146805891519813,
+    "trav": 7242.09960842963,
+    "passes": false
+  },
+  "p_only_high_gain": {
+    "cyc": 0.68,
+    "p2p": 5.232745961622598,
+    "iae": 1534.2092305816045,
+    "ss": 1.046790044470875,
+    "trav": 4031.127894226971,
+    "passes": false
+  },
+  "textbook_imc_no_deadband": {
+    "cyc": 0.9600000000000003,
+    "p2p": 4.432983818330904,
+    "iae": 1497.3392240505223,
+    "ss": 0.9305553147986692,
+    "trav": 776.5284577179663,
+    "passes": false
+  },
+  "derivative_kick_chatter": {
+    "cyc": 0.8000000000000002,
+    "p2p": 9.935877938163415,
+    "iae": 3762.9806901877755,
+    "ss": 2.4262929928309793,
+    "trav": 15133.90389884705,
+    "passes": false
+  },
+  "oversized_deadband_with_fast_tuning": {
+    "cyc": 0.0,
+    "p2p": 1.519090631063591e-09,
+    "iae": 5730.243836216321,
+    "ss": 3.9999999999999574,
+    "trav": 0.0,
+    "passes": false
+  },
+  "undersized_deadband": {
+    "cyc": 0.8800000000000002,
+    "p2p": 5.211160259662741,
+    "iae": 1549.6726372032124,
+    "ss": 0.8961518806408764,
+    "trav": 638.8659286982945,
+    "passes": false
+  }
+}

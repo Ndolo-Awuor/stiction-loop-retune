@@ -1,0 +1,45 @@
+schema_version = "1.4"
+
+artifacts = ["/app/controller.json"]
+
+[task]
+name = "afterquery/stiction-loop-retune"
+description = "Retune an oscillating process loop from closed-loop historian data so that a simulated held-out test shows no sustained oscillation, good disturbance rejection, small offset and limited valve travel."
+authors = [{ name = "Yvonne Awuor Ndolo", email = "ndolopj37@gmail.com" }]
+keywords = ["control-loop-tuning", "system-identification", "valve-stiction", "instrumentation-and-control", "closed-loop-data"]
+
+[metadata]
+author_name = "Yvonne Awuor Ndolo"
+author_email = "ndolopj37@gmail.com"
+author_organization = "Independent Researcher"
+author_profile = "https://www.linkedin.com/in/yvonne-awuor-7aa7b7395/"
+conflicts_of_interest = "None"
+domain = "engineering-sciences"
+field = "electrical-engineering"
+subfield = "process control and loop tuning"
+category = "Science"
+subcategory = "Electrical & Computer Engineering"
+tags = ["control-loop-tuning", "pid", "valve-stiction", "system-identification", "closed-loop-identification", "instrumentation-and-control"]
+expert_time_estimate_hours = 4
+relevant_experience = "REPLACE THIS with your own specific, truthful loop-tuning and PLC/SCADA experience for this task: what loops you tuned, on what plant, what tools, and any experience with sticking valves or historian-based loop assessment. Generic text fails review."
+difficulty_explanation = "DRAFT - rewrite in your own words. The data are synthetic (a seeded generator, disclosed): a two-lag process with dead time, a gain that changes with operating point, sensor noise, unmeasured load disturbances and a sticking valve, logged under an aggressive existing PI controller. The log alone does not say why the loop cycles. Textbook tuning from a first-order-plus-dead-time fit, or blanket detuning, fails the held-out tests: PI-only settings cannot both remove the stick-slip oscillation and reject disturbances, so the answer needs the error dead-band and a dead-band sized against both the stick band and the sensor noise. Too small leaves a cycle or a chattering valve; too large leaves an offset and slow recovery. A blind fixed dead-band passes only a minority of instances because the acceptable window moves with the noise level and stiction size, which the agent must read from the data."
+solution_explanation = "DRAFT - rewrite in your own words. Fit a static map from the setpoint plateaus, then fit two lags, dead time and a stick-slip valve model by simulation error on high-passed residuals (which removes the unmeasured load disturbances) using the logged OP as the input, estimate sensor noise level and correlation from second differences of PV, and search (Kp, Ti, db) on the fitted model exactly the way the verifier will judge it: several noise seeds, several gain and delay variants, fraction of runs that oscillate, disturbance IAE, offset and output travel. Pick the lowest-IAE tuning in the interior of the feasible region."
+verification_explanation = "DRAFT - rewrite in your own words. tests/test_retune.py loads /app/controller.json, rejects out-of-range or non-finite settings, and simulates the settings on a hidden true plant (and gain and delay perturbed variants) over 25 held-out runs with noise seeds the agent never saw. Four gates must all pass: fraction of runs with a sustained oscillation <= 0.25; worst seed-averaged steady-state offset <= 0.9 x the stick band in PV units; disturbance IAE <= 0.75 x the IAE of a loop that never acts; controller-output travel <= 6 x the least travel of any clearly good tuning on the true plant (a brute-force grid, independent of every solver). Ground truth is the simulated physics of the hidden plant from a disclosed seeded generator; no reference answer is compared. See README for calibration over 32 regenerated plants."
+
+[verifier]
+timeout_sec = 600.0
+environment_mode = "separate"
+
+[verifier.environment]
+network_mode = "no-network"
+
+[agent]
+timeout_sec = 14400.0
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+network_mode = "public"

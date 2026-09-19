@@ -1,0 +1,137 @@
+{
+ "pass_counts_32": {
+  "solver_a (identification + simulation design)": 27,
+  "solver_b (field heuristic, no simulation)": 21,
+  "existing controller": 0,
+  "textbook FOPDT/IMC, no dead-band": 0,
+  "blanket detune (Kp 0.2, Ti 200)": 0,
+  "textbook + dead-band 1": 0,
+  "textbook + dead-band 1.5": 0,
+  "textbook + dead-band 2": 3,
+  "textbook + dead-band 2.5": 6,
+  "textbook + dead-band 3": 13,
+  "textbook + dead-band 4": 17,
+  "textbook + dead-band 5": 15,
+  "textbook + dead-band 3 sigma (noise-informed only)": 14,
+  "textbook + dead-band 0.45 x stick band (stick-informed only)": 9
+ },
+ "ladder_seed30": {
+  "solver_a (identification + simulation design)": {
+   "cyc": 0.08,
+   "ss": 0.997,
+   "iae": 1848.56,
+   "trav": 74.749,
+   "passes": true
+  },
+  "solver_b (field heuristic, no simulation)": {
+   "cyc": 0.08,
+   "ss": 0.831,
+   "iae": 2732.496,
+   "trav": 98.418,
+   "passes": true
+  },
+  "existing controller": {
+   "cyc": 1.0,
+   "ss": 5.526,
+   "iae": 6111.416,
+   "trav": 1370.874,
+   "passes": false
+  },
+  "textbook FOPDT/IMC, no dead-band": {
+   "cyc": 0.96,
+   "ss": 0.837,
+   "iae": 1243.698,
+   "trav": 1313.226,
+   "passes": false
+  },
+  "blanket detune (Kp 0.2, Ti 200)": {
+   "cyc": 1.0,
+   "ss": 0.712,
+   "iae": 4720.541,
+   "trav": 156.08,
+   "passes": false
+  },
+  "textbook + dead-band 1": {
+   "cyc": 0.64,
+   "ss": 0.824,
+   "iae": 1443.951,
+   "trav": 543.129,
+   "passes": false
+  },
+  "textbook + dead-band 1.5": {
+   "cyc": 0.32,
+   "ss": 1.025,
+   "iae": 1826.553,
+   "trav": 336.411,
+   "passes": false
+  },
+  "textbook + dead-band 2": {
+   "cyc": 0.2,
+   "ss": 1.182,
+   "iae": 2354.483,
+   "trav": 279.437,
+   "passes": false
+  },
+  "textbook + dead-band 2.5": {
+   "cyc": 0.16,
+   "ss": 1.34,
+   "iae": 2699.825,
+   "trav": 175.837,
+   "passes": false
+  },
+  "textbook + dead-band 3": {
+   "cyc": 0.08,
+   "ss": 2.359,
+   "iae": 3699.949,
+   "trav": 201.877,
+   "passes": false
+  },
+  "textbook + dead-band 4": {
+   "cyc": 0.0,
+   "ss": 3.04,
+   "iae": 4856.273,
+   "trav": 96.135,
+   "passes": false
+  },
+  "textbook + dead-band 5": {
+   "cyc": 0.0,
+   "ss": 4.0,
+   "iae": 5730.244,
+   "trav": 3.155,
+   "passes": false
+  },
+  "textbook + dead-band 3 sigma (noise-informed only)": {
+   "cyc": 0.72,
+   "ss": 0.8,
+   "iae": 1641.772,
+   "trav": 538.745,
+   "passes": false
+  },
+  "textbook + dead-band 0.45 x stick band (stick-informed only)": {
+   "cyc": 0.48,
+   "ss": 0.879,
+   "iae": 1652.512,
+   "trav": 364.396,
+   "passes": false
+  }
+ },
+ "gates_seed30": {
+  "cyc": 0.25,
+  "ss": 2.783348917498507,
+  "iae": 4297.68287716224,
+  "trav": 107.04484086820138
+ },
+ "params_seed30": {
+  "solver_a": [
+   0.6317695145352082,
+   30.0,
+   0.0,
+   1.7123273839903392
+  ],
+  "solver_b_B1": [
+   0.6020280962719367,
+   42.87303708411949,
+   2.5084840182648396
+  ]
+ }
+}
