@@ -13,7 +13,7 @@ with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
             z.write(name, name)
             continue
         for dp, dn, fn in os.walk(name):
-            dn[:] = [d for d in dn if d not in SKIP_DIRS]
+            dn[:] = [d for d in dn if d not in SKIP_DIRS and not (len(d) > 1 and d[0] == "v" and d[1].isdigit())]
             for f in fn:
                 if f.endswith(".pyc"):
                     continue
