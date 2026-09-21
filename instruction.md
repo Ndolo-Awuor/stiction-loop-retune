@@ -1,28 +1,21 @@
-<!--
-DRAFT OF THE FACTS ONLY. Rewrite this in your own words before submission (the platform screens
-instruction.md for AI-generated text). Keep every fact below accurate (paths, file format, units, the
-list of graded qualities, the closing sentence). Do NOT add hints about how to solve it, and do not
-say what causes the problem. Delete this comment block before submitting.
--->
-
 # Retune an oscillating loop
 
-A process loop in our plant has been cycling and the operators want it fixed. The historian export for six
-hours of normal operation is at `/app/data/historian.csv`; `/app/data/README.txt` describes the columns,
-the settings of the controller that produced the log, and the exact controller block the new settings will
-be loaded into. The loop was in automatic throughout, setpoint changes were made by the operators, and
-unmeasured disturbances acted on the process. Nothing else about the loop is available.
+The process loop in the plant has been cycling, and the operators want it sorted out.
 
-Write the new controller settings to `/app/controller.json` as one JSON object with numeric fields:
+I’ve put the six-hour historian export from a period of normal operation in `/app/data/historian.csv`. The `/app/data/README.txt` has the column descriptions, the controller settings that were being used when the data was recorded, and the exact controller block where the new settings will be loaded.
 
-```
+The loop was in automatic the whole time. The operators made some setpoint changes, and there were also disturbances affecting the process that were not measured. Apart from the historian data and the information in the README, we don't have anything else to work with.
+
+Use that information to come up with the new controller settings and save them in `/app/controller.json`. Keep it as one JSON object with these four numeric fields:
+
+```arduino
 {"Kp": ..., "Ti": ..., "Td": ..., "db": ...}
 ```
 
-Units and allowed ranges are in the README. The settings are graded on the actual process, not on the log:
-they are run through simulated setpoint-hold and load-disturbance tests at several operating points and
-for modest changes in process gain and dead time, with sensor noise and disturbances you have not seen.
-What is checked is whether the loop stays free of sustained oscillation, rejects a load disturbance well,
-holds a small steady-state offset, and keeps the controller output from moving more than the job needs.
+The README gives you the required units and the allowed ranges for each setting, so use those when choosing the values.
+
+One important point is that the settings won't be judged just by how well they fit the six-hour log. They'll be run on the actual process through simulated setpoint-hold and load-disturbance tests at several operating points. The tests will also introduce modest changes in process gain and dead time, as well as sensor noise and disturbances that aren't in the data you have.
+
+What we need from the tuning is a loop that doesn't settle into sustained cycling, recovers properly when a load disturbance hits it, keeps the steady-state offset small, and doesn't make the controller output move around more than the job requires.
 
 You have 14400 seconds to complete this task. Do not cheat by using online solutions or hints specific to this task.
