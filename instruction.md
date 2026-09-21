@@ -8,7 +8,7 @@ The loop was in automatic the whole time. The operators made some setpoint chang
 
 Use that information to come up with the new controller settings and save them in `/app/controller.json`. Keep it as one JSON object with these four numeric fields:
 
-```arduino
+```
 {"Kp": ..., "Ti": ..., "Td": ..., "db": ...}
 ```
 
